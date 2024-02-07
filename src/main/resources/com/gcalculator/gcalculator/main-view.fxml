@@ -53,13 +53,6 @@
                         <Button fx:id="addScoreBtn" disable="true" layoutX="405.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#addScore" prefHeight="25.0" prefWidth="156.0" text="Add Scores" />
                         <Separator layoutX="304.0" layoutY="40.0" orientation="VERTICAL" prefHeight="256.0" prefWidth="1.0" />
                         <Separator layoutX="608.0" layoutY="40.0" orientation="VERTICAL" prefHeight="256.0" prefWidth="6.0" />
-                        <Button layoutX="623.0" layoutY="171.0" mnemonicParsing="false" onMouseClicked="#addStudentAndScore" text="Add Studnent &amp; Scores" />
-                        <Button layoutX="657.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#clearFields" text="clear fields" />
-                        <Label layoutX="693.0" layoutY="16.0" text="Actions">
-                           <font>
-                              <Font name="Calibri Bold" size="14.0" />
-                           </font>
-                        </Label>
                         <Separator layoutX="-3.0" layoutY="39.0" orientation="VERTICAL" prefHeight="256.0" prefWidth="6.0" />
                         <Label layoutX="233.0" layoutY="52.0" text="/ 10" />
                         <Label layoutX="233.0" layoutY="102.0" text="/ 20" />
@@ -75,7 +68,7 @@
                <children>
                   <AnchorPane prefHeight="300.0" prefWidth="307.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView fx:id="studentTable" layoutX="54.0" layoutY="50.0" prefHeight="300.0" prefWidth="307.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="studentTable" layoutX="54.0" layoutY="50.0" onMouseClicked="#showScores" prefHeight="300.0" prefWidth="307.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn fx:id="studentNameColumn" prefWidth="180.0" text="Student Name" />
                             <TableColumn fx:id="studentMatriculeColumn" minWidth="1.0" prefWidth="125.0" text="Matricule" />
