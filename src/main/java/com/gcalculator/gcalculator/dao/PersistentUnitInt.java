@@ -5,15 +5,15 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 @SuppressWarnings("unused")
-public class persistentUnitInt {
+public class PersistentUnitInt {
     private EntityManager entityManager;
     private EntityManagerFactory eMf;
 
-    public persistentUnitInt() {
-        this.eMf = Persistence.createEntityManagerFactory("gradeCalculator_pu");
+    public PersistentUnitInt() {
+        this.eMf = Persistence.createEntityManagerFactory("gCalculator_pu");
         this.entityManager = this.eMf.createEntityManager();
     }
-    public persistentUnitInt(String persistentUnit){
+    public PersistentUnitInt(String persistentUnit){
         this.eMf = Persistence.createEntityManagerFactory(persistentUnit);
         this.entityManager = this.eMf.createEntityManager();
     }

@@ -1,9 +1,18 @@
 package com.gcalculator.gcalculator.model;
 
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String matricule;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "student")
+    private List<Score> scores;
 
     public Student(){}
     public Student(String name, String matricule){
@@ -34,12 +43,21 @@ public class Student {
         this.matricule = matricule;
     }
 
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", matricule='" + matricule + '\'' +
+                ", scores=" + scores +
                 '}';
     }
 }

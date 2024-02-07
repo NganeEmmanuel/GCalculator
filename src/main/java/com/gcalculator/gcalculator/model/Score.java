@@ -1,12 +1,24 @@
 package com.gcalculator.gcalculator.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Score {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
+    private Student student;
+    @Column(name = "assignment_score")
     private Double assignmentScore;
+    @Column(name = "ca_score")
     private Double caScore;
+    @Column(name = "project_score")
     private Double projectScore;
+    @Column(name = "exam_score")
     private Double examScore;
+    @Column(name = "participation_score")
     private Double participationScore;
+    @Column(name = "attendance_score")
     private Double attendanceScore;
     private String grade;
     public Score(){}
@@ -17,6 +29,14 @@ public class Score {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public Double getAssignmentScore() {
