@@ -28,7 +28,7 @@
                         <Label layoutX="26.0" layoutY="99.0" text="Matricule" />
                         <TextField fx:id="studentMatriculeInput" layoutX="90.0" layoutY="95.0" promptText="student matricule" />
                         <Button layoutX="112.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#addStudent" text="Add Student" />
-                        <Label fx:id="addStudentWarningMessage" layoutX="23.0" layoutY="161.0" prefHeight="17.0" prefWidth="270.0" style="-fx-alignment: center;" text="Label" />
+                        <Label fx:id="addStudentWarningMessage" layoutX="23.0" layoutY="161.0" prefHeight="17.0" prefWidth="270.0" style="-fx-alignment: center;" />
                      </children></AnchorPane>
                   <AnchorPane layoutX="307.0" prefHeight="300.0" prefWidth="793.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="0.0">
                      <children>

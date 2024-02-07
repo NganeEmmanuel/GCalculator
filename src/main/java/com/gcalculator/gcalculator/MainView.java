@@ -10,12 +10,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainView extends Application {
-    Student student = new Student("Sample Student", "ICTU20221982");
-    private final StudentDao studentDao = new StudentDao();
+//    Student student = new Student("Sample Student", "ICTU20221982");
+//    private final StudentDao studentDao = new StudentDao();
 
     @Override
     public void start(Stage stage) throws IOException {
-        studentDao.add(student);
+//        studentDao.add(student);
         FXMLLoader fxmlLoader = new FXMLLoader(MainView.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1100, 600);
         stage.setTitle("Hello!");
