@@ -1,9 +1,10 @@
 module com.gcalculator.gcalculator {
     requires javafx.controls;
     requires javafx.fxml;
+
+    requires jxl;
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
-
     requires org.controlsfx.controls;
 
     opens com.gcalculator.gcalculator to javafx.fxml;

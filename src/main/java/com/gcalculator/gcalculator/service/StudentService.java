@@ -15,4 +15,8 @@ public class StudentService {
     public void addStudent(Student student) {
         studentDao.add(student);
     }
+
+    public Student getStudentByID(Long id) {
+        return studentDao.findById(id).orElse(null);
+    }
 }

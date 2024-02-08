@@ -2,10 +2,7 @@ package com.gcalculator.gcalculator.controller;
 
 import com.gcalculator.gcalculator.model.Score;
 import com.gcalculator.gcalculator.model.Student;
-import com.gcalculator.gcalculator.service.CalculateGradeService;
-import com.gcalculator.gcalculator.service.InputValidator;
-import com.gcalculator.gcalculator.service.ScoreService;
-import com.gcalculator.gcalculator.service.StudentService;
+import com.gcalculator.gcalculator.service.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -82,6 +79,9 @@ public class MainViewController implements Initializable {
 
     @FXML
     private TableView<Student> studentTable;
+
+    @FXML
+    private Button generateReportBtn;
     private final CalculateGradeService calculateGradeService = new CalculateGradeService();
     private final ScoreService scoreService = new ScoreService();
 
@@ -136,6 +136,7 @@ public class MainViewController implements Initializable {
                 performanceTable.getItems().clear();
                 studentTable.getSelectionModel().select(student);
                 addScoreBtn.setDisable(false);
+                generateReportBtn.setDisable(false);
                 return student;
             }
         }
@@ -152,6 +153,7 @@ public class MainViewController implements Initializable {
     void showScores(MouseEvent event) {
         performanceTable.getItems().clear();
         addScoreBtn.setDisable(false);
+        generateReportBtn.setDisable(false);
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
         if (selectedStudent != null) {
             performanceTable.getItems().addAll(scoreService.getScoreByStudentId(selectedStudent.getId()));
@@ -177,6 +179,12 @@ public class MainViewController implements Initializable {
         participationInput.setText("");
         AddScoreErroMessage.setText("");
         addStudentWarningMessage.setText("");
+    }
+
+
+    @FXML
+    void generateReport(MouseEvent event) {
+        ReportGeneratorService.generateReport(studentTable.getSelectionModel().getSelectedItem().getId());
     }
 
     private final StudentService studentService = new StudentService();

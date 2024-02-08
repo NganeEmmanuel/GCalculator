@@ -54,7 +54,7 @@
                         <Separator layoutX="304.0" layoutY="40.0" orientation="VERTICAL" prefHeight="256.0" prefWidth="1.0" />
                         <Separator layoutX="608.0" layoutY="40.0" orientation="VERTICAL" prefHeight="256.0" prefWidth="6.0" />
                         <Button layoutX="623.0" layoutY="171.0" mnemonicParsing="false" onMouseClicked="#addStudentAndScore" text="Add Studnent &amp; Scores" />
-                        <Button layoutX="657.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#clearFields" text="clear fields" />
+                        <Button layoutX="657.0" layoutY="86.0" mnemonicParsing="false" onMouseClicked="#clearFields" text="clear fields" />
                         <Label layoutX="693.0" layoutY="16.0" text="Actions">
                            <font>
                               <Font name="Calibri Bold" size="14.0" />
@@ -68,6 +68,7 @@
                         <Label layoutX="538.0" layoutY="52.0" text="/ 5" />
                         <Label layoutX="538.0" layoutY="102.0" text="/ 5" />
                         <Label fx:id="AddScoreErroMessage" layoutX="310.0" layoutY="154.0" prefHeight="17.0" prefWidth="290.0" style="-fx-alignment: center;" text="Label" />
+                        <Button fx:id="generateReportBtn" disable="true" layoutX="642.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#generateReport" text="Generate Report" />
                      </children></AnchorPane>
                </children>
             </AnchorPane>
