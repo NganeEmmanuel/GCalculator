@@ -87,15 +87,19 @@ public class MainViewController implements Initializable {
 
     @FXML
     void addScore(MouseEvent event) {
-        Double assignment = InputValidator.isDouble(assignmentInput.getText())? Double.parseDouble(assignmentInput.getText()): 0.00231;
-        Double ca = InputValidator.isDouble(caInput.getText())? Double.parseDouble(caInput.getText()): 0.00231;
-        Double project = InputValidator.isDouble(projectInput.getText())? Double.parseDouble(projectInput.getText()): 0.00231;
-        Double exam = InputValidator.isDouble(examInput.getText())? Double.parseDouble(examInput.getText()): 0.00231;
-        Double attendance = InputValidator.isDouble(attendanceInput.getText())? Double.parseDouble(attendanceInput.getText()): 0.00231;
-        Double participation = InputValidator.isDouble(participationInput.getText())? Double.parseDouble(participationInput.getText()): 0.00231;
-        if(assignment != 0.00231 && ca != 0.00231 && project != 0.00231 && exam != 0.00231 && attendance != 0.00231 && participation != 0.00231){
+        addNewScoreToStudent(studentTable.getSelectionModel().getSelectedItem());
+    }
+
+    private void addNewScoreToStudent(Student student){
+        Double assignment = InputValidator.isDouble(assignmentInput.getText()) ? Double.parseDouble(assignmentInput.getText()) : 0.00231;
+        Double ca = InputValidator.isDouble(caInput.getText()) ? Double.parseDouble(caInput.getText()) : 0.00231;
+        Double project = InputValidator.isDouble(projectInput.getText()) ? Double.parseDouble(projectInput.getText()) : 0.00231;
+        Double exam = InputValidator.isDouble(examInput.getText()) ? Double.parseDouble(examInput.getText()) : 0.00231;
+        Double attendance = InputValidator.isDouble(attendanceInput.getText()) ? Double.parseDouble(attendanceInput.getText()) : 0.00231;
+        Double participation = InputValidator.isDouble(participationInput.getText()) ? Double.parseDouble(participationInput.getText()) : 0.00231;
+        if (assignment != 0.00231 && ca != 0.00231 && project != 0.00231 && exam != 0.00231 && attendance != 0.00231 && participation != 0.00231) {
             Score score = new Score();
-            score.setStudent(studentTable.getSelectionModel().getSelectedItem());
+            score.setStudent(student);
             score.setAssignmentScore(assignment);
             score.setCaScore(ca);
             score.setAttendanceScore(attendance);
@@ -104,7 +108,7 @@ public class MainViewController implements Initializable {
             score.setParticipationScore(participation);
             score.setGrade(calculateGradeService.calculateGrade(assignment, ca, project, exam, attendance, participation));
             scoreService.addScore(score);
-            if(score.getId() != null){
+            if (score.getId() != null) {
                 assignmentInput.setText("0");
                 caInput.setText("0");
                 projectInput.setText("0");
@@ -115,13 +119,12 @@ public class MainViewController implements Initializable {
                 studentTable.getSelectionModel().getSelectedItem().getScores().add(score);
                 performanceTable.getItems().add(score);
             }
-        }else {
+        } else {
             AddScoreErroMessage.setText("Please fill in the form properly");
         }
     }
 
-    @FXML
-    void addStudent(MouseEvent event) {
+    private Student addNewStudent(){
         if(!studentNameInput.getText().isBlank() && !studentMatriculeInput.getText().isBlank()){
             Student student = new Student(studentNameInput.getText(), studentMatriculeInput.getText());
             studentService.addStudent(student);
@@ -130,10 +133,19 @@ public class MainViewController implements Initializable {
                 studentNameInput.setText("");
                 studentMatriculeInput.setText("");
                 addStudentWarningMessage.setText("Student added successfully");
+                performanceTable.getItems().clear();
+                studentTable.getSelectionModel().select(student);
+                addScoreBtn.setDisable(false);
+                return student;
             }
-        }else{
-            addStudentWarningMessage.setText("Please fill all require student information");
         }
+        addStudentWarningMessage.setText("Please fill all require student information");
+        return null;
+    }
+
+    @FXML
+    void addStudent(MouseEvent event) {
+        addNewStudent();
     }
 
     @FXML
@@ -149,12 +161,22 @@ public class MainViewController implements Initializable {
 
     @FXML
     void addStudentAndScore(MouseEvent event) {
-
+        Student student = addNewStudent();
+        addNewScoreToStudent(student);
     }
 
     @FXML
     void clearFields(MouseEvent event) {
-
+        studentNameInput.setText("");
+        studentMatriculeInput.setText("");
+        assignmentInput.setText("");
+        examInput.setText("");
+        caInput.setText("");
+        projectInput.setText("");
+        attendanceInput.setText("");
+        participationInput.setText("");
+        AddScoreErroMessage.setText("");
+        addStudentWarningMessage.setText("");
     }
 
     private final StudentService studentService = new StudentService();
